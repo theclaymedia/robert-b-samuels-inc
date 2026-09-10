@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robert B. Samuels, Inc.</title>
+<meta name="description" content="Robert B. Samuels, Inc. — licensed electrical contractor serving New York City for 100 years. Fast-track installations, 24/7 emergency service, and Samuels DATACOM telecommunications infrastructure.">
+<link rel="icon" href="assets/img/rbs-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #0B1230;
+    --ink-2: #131C45;
+    --blue: #1C2BE3;
+    --blue-deep: #1220B4;
+    --sky: #6E86FF;
+    --paper: #F4F6FC;
+    --white: #FFFFFF;
+    --line: #D9DEEF;
+    --line-dark: rgba(255,255,255,0.14);
+    --slate: #565D7C;
+    --slate-2: #8A90AD;
+    --copper: #C4873A;
+
+    --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+
+    --max: 1200px;
+    --gutter: clamp(20px, 4vw, 48px);
+    --section: clamp(72px, 10vw, 128px);
+    --radius: 4px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, video { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3, h4 { margin: 0; font-family: var(--display); line-height: 1; text-wrap: balance; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  :focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+
+  .wrap { width: min(var(--max), 100% - 2 * var(--gutter)); margin-inline: auto; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+  .dark .eyebrow { color: var(--sky); }
+
+  .h2 { font-size: clamp(40px, 5.2vw, 64px); font-weight: 700; text-transform: uppercase; letter-spacing: -0.005em; }
+  .lede { font-size: 19px; color: var(--slate); max-width: 62ch; }
+  .dark .lede { color: #B7BDDA; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 26px;
+    font-family: var(--display); font-size: 18px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; border-radius: var(--radius);
+    border: 1.5px solid transparent; cursor: pointer; transition: transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--blue); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-deep); }
+  .btn-ghost { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.55); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+  .btn-outline { background: transparent; color: var(--blue); border-color: var(--blue); }
+  .btn-outline:hover { background: var(--blue); color: var(--white); }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    padding: 14px 0;
+    transition: background .25s ease, box-shadow .25s ease, padding .25s ease;
+  }
+  .nav.is-solid { background: rgba(11,18,48,0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line-dark); padding: 8px 0; }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { display: inline-flex; background: var(--white); padding: 6px 12px; border-radius: 3px; text-decoration: none; }
+  .brand img { height: 40px; width: auto; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    font-family: var(--display); font-size: 17px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.86); text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover { color: var(--white); border-color: var(--sky); }
+  .nav-phone {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 14px; color: var(--white); text-decoration: none;
+    background: var(--blue); padding: 10px 16px; border-radius: 3px; white-space: nowrap;
+  }
+  .nav-phone .dot { width: 8px; height: 8px; border-radius: 50%; background: #5CF2A0; box-shadow: 0 0 0 4px rgba(92,242,160,0.25); }
+  .nav-toggle { display: none; background: none; border: 1.5px solid rgba(255,255,255,0.5); color: var(--white); border-radius: 3px; padding: 8px 10px; font-family: var(--display); font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; display: grid; place-items: center; padding: 0;
+    background: var(--ink); color: var(--white); overflow: hidden; isolation: isolate;
+    text-align: center;
+  }
+  .hero video, .hero .poster {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;
+  }
+  .hero .poster { display: none; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(11,18,48,0.72) 0%, rgba(11,18,48,0.38) 40%, rgba(11,18,48,0.78) 100%),
+      radial-gradient(60% 50% at 50% 55%, rgba(28,43,227,0.22), transparent 70%);
+  }
+  .hero-inner { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 112px var(--gutter) 56px; width: 100%; max-width: 1100px; }
+  .hero .eyebrow { color: #C9D1FF; flex-wrap: wrap; justify-content: center; text-align: center; }
+  .hero .eyebrow::before, .hero .eyebrow::after { content: ""; width: 28px; height: 2px; background: var(--copper); }
+  .hero h1 {
+    font-size: clamp(48px, 7.2vw, 104px); font-weight: 700; text-transform: uppercase; line-height: 0.92; letter-spacing: -0.01em;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.35);
+  }
+  .hero h1 em { font-style: normal; color: var(--sky); }
+  .hero p { font-size: clamp(16px, 1.4vw, 19px); color: #DDE2F7; max-width: 60ch; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(4, auto); justify-content: center;
+    margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.22);
+  }
+  .hero-stats div { padding: clamp(12px, 1.8vw, 18px) clamp(10px, 2.6vw, 34px); text-align: center; border-left: 1px solid rgba(255,255,255,0.22); }
+  .hero-stats div:first-child { border-left: 0; }
+  .hero-stats strong { display: block; font-family: var(--display); font-size: clamp(24px, 3.4vw, 40px); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .hero-stats span { font-family: var(--mono); font-size: clamp(9px, 0.9vw, 12px); letter-spacing: 0.12em; text-transform: uppercase; color: #B7BDDA; white-space: nowrap; }
+  .scroll-cue { display: none; position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+  /* ---------- Trust bar ---------- */
+  .trust { background: var(--white); border-bottom: 1px solid var(--line); }
+  .trust .wrap { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 22px 0; flex-wrap: wrap; }
+  .trust p { font-family: var(--mono); font-size: 13px; color: var(--slate); max-width: 64ch; line-height: 1.5; }
+  .trust p strong { color: var(--ink); font-weight: 500; }
+  .trust-logos { display: flex; align-items: center; gap: 36px; }
+  .trust-logos img { height: 56px; width: auto; }
+
+  /* ---------- Sections ---------- */
+  section { padding: var(--section) 0; }
+  .section-head { display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: 56px; max-width: 760px; }
+  .dark { background: var(--ink); color: var(--white); }
+
+  /* Services */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .service { background: var(--white); padding: 40px 36px 44px; display: flex; flex-direction: column; gap: 18px; position: relative; }
+  .service .glyph { width: 48px; height: 48px; color: var(--blue); }
+  .service h3 { font-size: 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.01em; }
+  .service p { color: var(--slate); font-size: 16px; }
+  .service .tag { margin-top: auto; padding-top: 16px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper); }
+
+  /* About */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+  .about-photo { position: relative; }
+  .about-photo img { width: 100%; height: 560px; object-fit: cover; border-radius: var(--radius); }
+  .about-photo figcaption {
+    position: absolute; left: 20px; bottom: 20px; background: var(--ink); color: var(--white);
+    padding: 14px 18px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.5;
+  }
+  .about-photo figcaption strong { display: block; font-family: var(--display); font-size: 28px; letter-spacing: 0; text-transform: uppercase; font-weight: 700; color: var(--sky); }
+  .about-copy { display: flex; flex-direction: column; gap: 24px; }
+  .about-copy p { max-width: 58ch; color: var(--slate); font-size: 17px; }
+  .leaders { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; border-top: 1px solid var(--line); padding-top: 24px; margin-top: 8px; }
+  .leaders div { font-family: var(--display); font-size: 22px; font-weight: 600; text-transform: uppercase; line-height: 1.1; }
+  .leaders span { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--slate-2); text-transform: uppercase; margin-top: 4px; }
+
+  /* Portfolio */
+  .portfolio { background: var(--paper); }
+  .portfolio .section-head { margin-bottom: 32px; }
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
+  .filter {
+    font-family: var(--display); font-size: 16px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--white); border: 1px solid var(--line); color: var(--slate); padding: 9px 16px; border-radius: 3px; cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .filter:hover { border-color: var(--blue); color: var(--blue); }
+  .filter[aria-pressed="true"] { background: var(--ink); color: var(--white); border-color: var(--ink); }
+  .work-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 250px; gap: 14px; }
+  .work {
+    position: relative; overflow: hidden; border-radius: var(--radius);
+    background: var(--white); border: 1px solid var(--line);
+    padding: 24px; display: flex; flex-direction: column; justify-content: space-between;
+    text-decoration: none; color: var(--ink);
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .work:hover { transform: translateY(-3px); border-color: var(--blue); box-shadow: 0 16px 40px -24px rgba(28,43,227,0.45); }
+  .work.is-hidden { display: none; }
+  .work .sector { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue); }
+  .work h3 { font-size: 32px; font-weight: 600; text-transform: uppercase; line-height: 0.98; margin-top: 8px; }
+  .work .addr { font-family: var(--mono); font-size: 13px; color: var(--slate); line-height: 1.45; display: flex; gap: 10px; align-items: flex-start; }
+  .work .addr::before { content: ""; flex: none; width: 10px; height: 10px; border: 2px solid var(--copper); border-radius: 50%; margin-top: 4px; }
+  .work .grid-mark { position: absolute; right: 18px; top: 18px; width: 22px; height: 22px; color: var(--line); }
+  .work.featured { grid-column: span 2; grid-row: span 2; background: var(--ink); color: var(--white); border-color: var(--ink); isolation: isolate; }
+  .work.featured::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: url("assets/img/nyc-skyline-night.jpg") center/cover no-repeat; opacity: 0.55;
+  }
+  .work.featured::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(11,18,48,0.2), rgba(11,18,48,0.92) 75%); }
+  .work.featured .sector { color: var(--sky); }
+  .work.featured h3 { font-size: clamp(44px, 5vw, 72px); font-weight: 700; }
+  .work.featured .addr { color: #C9D0EE; }
+  .work.featured .desc { color: #DDE2F7; font-size: 15px; max-width: 42ch; margin-top: 12px; }
+  .work.wide { grid-column: span 2; }
+  .work.wide h3 { font-size: 40px; }
+  .work-note { margin-top: 28px; font-family: var(--mono); font-size: 12px; color: var(--slate-2); letter-spacing: 0.04em; }
+
+  /* Clients */
+  .clients .section-head { max-width: 760px; }
+  .directory {
+    columns: 4; column-gap: 40px; column-rule: 1px solid var(--line-dark);
+    font-family: var(--display); font-size: 22px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.15;
+  }
+  .directory li { break-inside: avoid; padding: 9px 0; border-bottom: 1px solid var(--line-dark); color: #E3E7F8; }
+  .clients-foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 36px; flex-wrap: wrap; }
+  .clients-foot p { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate-2); }
+
+  /* Datacom */
+  .datacom { background: var(--white); }
+  .datacom-grid { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(40px, 6vw, 96px); }
+  .datacom-copy { display: flex; flex-direction: column; gap: 22px; }
+  .datacom-copy p { color: var(--slate); max-width: 60ch; }
+  .spec-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; margin-top: 8px; }
+  .spec-list li { display: flex; gap: 12px; align-items: baseline; font-size: 15px; font-weight: 500; }
+  .spec-list li::before { content: ""; flex: none; width: 14px; height: 2px; background: var(--blue); transform: translateY(-4px); }
+  .brands { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .brands li { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; padding: 6px 10px; border: 1px solid var(--line); border-radius: 3px; color: var(--slate); }
+  .ticket { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; gap: 20px; align-self: start; position: sticky; top: 96px; }
+  .ticket-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 12px; }
+  .ticket-head h3 { font-size: 26px; font-weight: 600; text-transform: uppercase; }
+  .ticket-head span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--blue); }
+  .ticket dl { display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; margin: 0; font-size: 15px; }
+  .ticket dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--slate-2); padding-top: 4px; }
+  .ticket dd { margin: 0; font-weight: 500; }
+  .ticket ul.clients-mini { columns: 2; column-gap: 20px; font-family: var(--display); font-size: 19px; font-weight: 600; text-transform: uppercase; line-height: 1.15; }
+  .ticket ul.clients-mini li { padding: 5px 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+
+  /* Careers + Contact */
+  .contact { background: var(--paper); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .contact-card { background: var(--white); padding: 48px 44px; display: flex; flex-direction: column; gap: 18px; }
+  .contact-card.emergency { background: var(--ink); color: var(--white); }
+  .contact-card h3 { font-size: 40px; font-weight: 700; text-transform: uppercase; }
+  .contact-card p { color: var(--slate); }
+  .contact-card.emergency p { color: #C9D0EE; }
+  .contact-card .big-phone { font-family: var(--display); font-size: clamp(40px, 5vw, 64px); font-weight: 700; color: var(--white); text-decoration: none; line-height: 1; font-variant-numeric: tabular-nums; }
+  .contact-card .big-phone:hover { color: var(--sky); }
+  .contact-card address { font-style: normal; font-family: var(--mono); font-size: 14px; line-height: 1.7; color: var(--ink); }
+  .contact-card .row { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; font-size: 15px; }
+  .contact-card .row dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--slate-2); padding-top: 3px; }
+  .contact-card .row dd { margin: 0; font-weight: 500; }
+  .contact-card .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; padding-top: 12px; }
+
+  /* Footer */
+  footer { background: var(--ink-2); color: #B7BDDA; padding: 48px 0 28px; border-top: 1px solid var(--line-dark); }
+  .foot-top { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; padding-bottom: 28px; border-bottom: 1px solid var(--line-dark); }
+  .foot-top .brand img { height: 34px; }
+  .foot-aff { display: flex; align-items: center; gap: 22px; background: var(--white); padding: 8px 16px; border-radius: 3px; }
+  .foot-aff img { height: 40px; width: auto; }
+  .foot-bottom { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-top: 22px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; }
+  .foot-bottom a { text-decoration: none; }
+  .foot-bottom a:hover { color: var(--white); }
+
+  /* Reveal (visible at rest, gently settles in) */
+  .reveal { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { transition: opacity .6s ease, transform .6s ease; }
+    .reveal.pending { opacity: 0.001; transform: translateY(14px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero video { display: none; }
+    .hero .poster { display: block; }
+    .btn:hover, .work:hover { transform: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1080px) {
+    .work-grid { grid-template-columns: repeat(3, 1fr); }
+    .directory { columns: 3; }
+  }
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: inline-flex; }
+    .nav.is-open .nav-links {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+      position: absolute; left: 0; right: 0; top: 100%; background: var(--ink); padding: 16px var(--gutter) 24px; border-top: 1px solid var(--line-dark);
+    }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-grid, .datacom-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-photo img { height: 380px; }
+    .portfolio .section-head { grid-template-columns: 1fr; align-items: start; }
+    .work-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 210px; }
+    .work.featured { grid-column: span 2; }
+    .work.wide { grid-column: span 1; }
+    .work.wide h3 { font-size: 32px; }
+    .directory { columns: 2; font-size: 19px; }
+  }
+  @media (max-width: 560px) {
+    .nav-phone span.num { display: none; }
+    .work-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .work { min-height: 180px; }
+    .work.featured { grid-column: span 1; grid-row: span 1; min-height: 360px; }
+    .directory { columns: 1; }
+    .spec-list { grid-template-columns: 1fr; }
+    .leaders { grid-template-columns: 1fr; }
+    .trust .wrap { justify-content: center; text-align: center; }
+    .hero-inner { padding-top: 96px; padding-bottom: 40px; gap: 18px; }
+    .hero .eyebrow { font-size: 10px; letter-spacing: 0.12em; }
+    .hero .eyebrow::before, .hero .eyebrow::after { display: none; }
+    .hero-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; }
+    .hero-stats div { padding: 12px 4px; }
+    .hero-stats strong { font-size: 22px; }
+    .hero-stats span { font-size: 8.5px; letter-spacing: 0.04em; white-space: normal; display: block; line-height: 1.3; margin-top: 4px; }
+    .btn { padding: 13px 18px; font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Robert B. Samuels, Inc. home">
+      <img src="assets/img/rbs-logo.png" alt="Robert B. Samuels Inc. — Licensed Electrical Contractor">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#clients">Clients</a>
+      <a href="#datacom">DATACOM</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a class="nav-phone" href="tel:+12126455150"><span class="dot" aria-hidden="true"></span>24/7 <span class="num">(212) 645-5150</span></a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
+    <video autoplay muted loop playsinline poster="assets/img/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/hero-nyc.mp4" type="video/mp4">
+    </video>
+    <img class="poster" src="assets/img/hero-poster.jpg" alt="" aria-hidden="true">
+
+    <div class="hero-inner">
+      <span class="eyebrow">Licensed Electrical Contractor · New York City</span>
+      <h1>Powering New York<br>for <em>100 Years</em></h1>
+      <p>At Robert B. Samuels, Inc. we have provided immediate and comprehensive electrical service to Manhattan's owners, institutions, and builders for the past century.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#portfolio">View Our Work</a>
+        <a class="btn btn-ghost" href="tel:+12126455150">24/7 Emergency Service</a>
+      </div>
+      <div class="hero-stats" aria-label="At a glance">
+        <div><strong>100</strong><span>Years in service</span></div>
+        <div><strong>70+</strong><span>Foremen in the field</span></div>
+        <div><strong>24/7</strong><span>365-day standby</span></div>
+        <div><strong>NY · NJ</strong><span>Licensed + Westchester</span></div>
+      </div>
+    </div>
+    <span class="scroll-cue" aria-hidden="true">Scroll</span>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust">
+    <div class="wrap">
+      <p><strong>Licensed in New York, New Jersey and Westchester.</strong> Affiliated with Local Union No. 3 IBEW, NECA, and the New York Electrical Contractors Association.</p>
+      <div class="trust-logos">
+        <img src="assets/img/aff-ibew-local-3.png" alt="International Brotherhood of Electrical Workers, Local Union No. 3">
+        <img src="assets/img/aff-neca.png" alt="NECA — National Electrical Contractors Association">
+        <img src="assets/img/aff-neca-new-york.png" alt="NECA New York — New York City Chapter">
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What we do</span>
+        <h2 class="h2">Comprehensive electrical service</h2>
+        <p class="lede">A full-service house. Consultants, project managers and subcontractors on complex Manhattan work, with low-voltage handled in-house by Samuels DATACOM.</p>
+      </div>
+      <div class="services-grid reveal">
+        <article class="service">
+          <svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M26 4 10 28h12l-2 16 18-26H26l2-14Z"/></svg>
+          <h3>Fast Track Installations</h3>
+          <p>Our experienced leadership allows us to excel at complex project coordination. Our vast experience enables us to work as consultants, project managers and subcontractors.</p>
+          <span class="tag">Schedule-driven delivery</span>
+        </article>
+        <article class="service">
+          <svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M24 12v12l8 5"/></svg>
+          <h3>24/7 Emergency Service</h3>
+          <p>Our team is well-practiced and available. We are on standby 365 days a year, and deployed frequently. Contact our office at (212) 645-5150.</p>
+          <span class="tag">Always on standby</span>
+        </article>
+        <article class="service">
+          <svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="8" width="36" height="32" rx="2"/><path d="M6 18h36M16 8v32M14 28l5 5 9-9"/></svg>
+          <h3>Fully Coordinated Operations</h3>
+          <p>Results-oriented teamwork guarantees completed contracts on time — in the field, administratively, financially and technically. More than seventy foremen provide mature, skilled, reliable workmanship every day.</p>
+          <span class="tag">Field · Admin · Finance · Technical</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="wrap about-grid">
+      <figure class="about-photo reveal" style="margin:0">
+        <img src="assets/img/empire-state.jpg" alt="Empire State Building spire lit at dusk">
+        <figcaption><strong>Est. a century ago</strong>Trusted by the New York construction community</figcaption>
+      </figure>
+      <div class="about-copy reveal">
+        <span class="eyebrow">About the firm</span>
+        <h2 class="h2">Built on a century of workmanship</h2>
+        <p>Robert B. Samuels, Inc. has been an electrical contractor for more than 95 years. The company continues to be led by Thomas Pagliaro Jr., Herb Rocchi and Joe Rampino, who ensure the continued growth of the firm's technical abilities and professionalism.</p>
+        <p>We have gained the trust and confidence of the construction community by delivering quality workmanship at competitive cost, on schedule. We are a full-service house; our low-voltage services are delivered through Samuels DATACOM.</p>
+        <div class="leaders">
+          <div>Thomas Pagliaro Jr.<span>CEO · President</span></div>
+          <div>Herb Rocchi<span>Leadership</span></div>
+          <div>Joe Rampino<span>Leadership</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="portfolio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Portfolio · Recent projects</span>
+        <h2 class="h2">Large-scale work across Manhattan</h2>
+        <p class="lede">Recent large-scale projects based in Manhattan — from convention halls and arenas to trading floors, hospitals and landmark institutions.</p>
+      </div>
+      <div class="filters reveal" role="group" aria-label="Filter projects by sector">
+          <button class="filter" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" data-filter="financial" aria-pressed="false">Financial</button>
+          <button class="filter" data-filter="realestate" aria-pressed="false">Real Estate</button>
+          <button class="filter" data-filter="institutional" aria-pressed="false">Institutional</button>
+          <button class="filter" data-filter="media" aria-pressed="false">Media &amp; Retail</button>
+          <button class="filter" data-filter="hospitality" aria-pressed="false">Hospitality &amp; Venues</button>
+      </div>
+
+      <div class="work-grid reveal" id="workGrid">
+        <a class="work featured" href="#contact" data-sector="hospitality">
+          <div>
+            <span class="sector">Convention &amp; Events</span>
+            <h3>Javits Center</h3>
+            <p class="desc">New York's largest convention facility — fast-track power distribution and coordinated work across an occupied, event-driven building.</p>
+          </div>
+          <p class="addr">Javits Center, Manhattan</p>
+        </a>
+
+        <a class="work" href="#contact" data-sector="financial"><div><span class="sector">Financial</span><h3>Goldman Sachs</h3></div><p class="addr">200 West Street</p></a>
+        <a class="work" href="#contact" data-sector="financial"><div><span class="sector">Financial</span><h3>Blackstone</h3></div><p class="addr">345 Park Avenue</p></a>
+        <a class="work wide" href="#contact" data-sector="hospitality"><div><span class="sector">Sports &amp; Entertainment</span><h3>Madison Square Garden</h3></div><p class="addr">3 Penn Plaza</p></a>
+        <a class="work" href="#contact" data-sector="financial"><div><span class="sector">Financial</span><h3>Morgan Stanley</h3></div><p class="addr">1 New York Plaza</p></a>
+        <a class="work" href="#contact" data-sector="realestate"><div><span class="sector">Real Estate</span><h3>Vornado</h3></div><p class="addr">All Locations</p></a>
+        <a class="work wide" href="#contact" data-sector="institutional"><div><span class="sector">Institutional</span><h3>United Nations</h3></div><p class="addr">East 42nd Street Campus &amp; Long Island City</p></a>
+        <a class="work" href="#contact" data-sector="institutional"><div><span class="sector">Cultural</span><h3>Park Avenue Armory</h3></div><p class="addr">East 67th Street &amp; Park Avenue</p></a>
+        <a class="work" href="#contact" data-sector="financial"><div><span class="sector">Financial</span><h3>Deutsche Bank</h3></div><p class="addr">345 Park Avenue</p></a>
+        <a class="work" href="#contact" data-sector="financial"><div><span class="sector">Financial</span><h3>Highbridge</h3></div><p class="addr">40 West 57th Street</p></a>
+        <a class="work" href="#contact" data-sector="hospitality"><div><span class="sector">Hospitality</span><h3>Sheraton Hotel</h3></div><p class="addr">811 Seventh Avenue</p></a>
+        <a class="work" href="#contact" data-sector="media"><div><span class="sector">Media</span><h3>McCann Erickson</h3></div><p class="addr">622 Third Avenue</p></a>
+        <a class="work" href="#contact" data-sector="realestate"><div><span class="sector">Real Estate</span><h3>New Water Street Corp.</h3></div><p class="addr">55 Water Street</p></a>
+        <a class="work" href="#contact" data-sector="institutional"><div><span class="sector">Nonprofit</span><h3>Open Society</h3></div><p class="addr">244 West 57th Street</p></a>
+        <a class="work" href="#contact" data-sector="institutional"><div><span class="sector">Healthcare</span><h3>Emblem Health</h3></div><p class="addr">32 Old Slip</p></a>
+        <a class="work" href="#contact" data-sector="media"><div><span class="sector">Media</span><h3>MediaVest</h3></div><p class="addr">1675 Broadway</p></a>
+        <a class="work" href="#contact" data-sector="media"><div><span class="sector">Retail</span><h3>Gap</h3></div><p class="addr">55 Thomas Street</p></a>
+        <a class="work" href="#contact" data-sector="institutional"><div><span class="sector">Legal</span><h3>Seward &amp; Kissel</h3></div><p class="addr">1 Battery Park Plaza</p></a>
+        <a class="work" href="#contact" data-sector="media"><div><span class="sector">Technology</span><h3>Innovative Interactive</h3></div><p class="addr">32 Avenue of the Americas</p></a>
+      </div>
+      <p class="work-note">19 projects listed · Sector tags added for the redesign concept · Project photography to be supplied by the client</p>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section id="clients" class="clients dark">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Corporations, Owners &amp; Institutions</span>
+        <h2 class="h2">Approved to work for New York's largest owners</h2>
+        <p class="lede">Robert B. Samuels, Inc. is a long-standing service provider and approved to work for the following corporations, owners and institutions.</p>
+      </div>
+      <ul class="directory reveal">
+        <li>Brookfield Financial Services</li>
+        <li>American Express</li>
+        <li>Paramount Group, Inc.</li>
+        <li>Vornado</li>
+        <li>Murray-Hill Properties</li>
+        <li>Silverstein Properties</li>
+        <li>RFR Properties</li>
+        <li>Helmsley-Spear</li>
+        <li>Hines</li>
+        <li>Macklowe Management</li>
+        <li>Tishman-Speyer</li>
+        <li>Starwood</li>
+        <li>Cushman &amp; Wakefield</li>
+        <li>C.B. Richard Ellis</li>
+        <li>Port Authority of NY &amp; NJ</li>
+        <li>Equity Office</li>
+        <li>Shorenstein</li>
+        <li>Bank of New York</li>
+        <li>Pfizer, Inc.</li>
+        <li>S.L. Green</li>
+        <li>Milstein Properties</li>
+        <li>Solow Realty</li>
+        <li>United Nations</li>
+        <li>Rudin Management</li>
+        <li>Jones Lang LaSalle</li>
+        <li>Newmark and Company</li>
+        <li>Jeffrey Mgmt / Feil Organization</li>
+        <li>Cornell Weill Medical</li>
+        <li>Monday Properties</li>
+        <li>Blackstone Group</li>
+        <li>HSBC Bank</li>
+        <li>Bar Realty Management, Inc.</li>
+        <li>Durst Organization</li>
+        <li>Taconic Partners</li>
+        <li>Sage Realty</li>
+        <li>Cohen Brothers</li>
+        <li>RXR Realty</li>
+        <li>Columbia Presbyterian Hospital</li>
+        <li>Macy's / Federated Department Stores</li>
+        <li>New Water Street Corp.</li>
+        <li>Boston Properties</li>
+        <li>Associated Press</li>
+        <li>ABC Capital Cities</li>
+        <li>Newmark Knight Frank</li>
+        <li>Offices of the NY State Attorney</li>
+      </ul>
+      <div class="clients-foot">
+        <p>45 approved owners and institutions</p>
+        <a class="btn btn-ghost" href="#contact">Request a proposal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATACOM -->
+  <section id="datacom" class="datacom">
+    <div class="wrap datacom-grid">
+      <div class="datacom-copy reveal">
+        <span class="eyebrow">Samuels DATACOM</span>
+        <h2 class="h2">Telecommunications infrastructure, in-house</h2>
+        <p>Our Telecommunication Infrastructure division was established in 2002 through the purchase of AR Communications Corporation. Together, the company is a diversified communication group specializing in voice, data, alarm, control, and fiber-video cabling infrastructure, with RCDD personnel on staff to design cable plant.</p>
+        <p>We offer a complete line of TIA/EIA-568A/B compliant hardware — Category 6A UTP, coaxial and fiber optic — and are certified installers backed by manufacturer warranties. Every system is tested with Fluke copper and fiber test sets; for demanding requirements we field OTDR and fusion-splicing equipment for loose-tube, ribbon, single- and multi-mode fiber.</p>
+        <p>A Project Manager is assigned to every job, large or small, responsible for scheduling, change orders, reporting and overall site management — with schedules shared directly with clients.</p>
+
+        <h3 style="font-size:24px; font-weight:600; text-transform:uppercase; margin-top:8px;">Specialized services</h3>
+        <ul class="spec-list">
+          <li>Project management</li>
+          <li>Job specification and preparation</li>
+          <li>Preparation of pull schedules</li>
+          <li>Preparation of floor plans</li>
+          <li>Moves, adds and changes</li>
+          <li>Cable testing and certification</li>
+          <li>Premises network installation and maintenance</li>
+          <li>Engineering support for LAN design and integration</li>
+        </ul>
+
+        <h3 style="font-size:24px; font-weight:600; text-transform:uppercase; margin-top:8px;">Certified installer for</h3>
+        <ul class="brands">
+          <li>Systimax</li><li>Leviton</li><li>TE</li><li>Ortronics</li><li>Corning</li><li>Uniprise</li><li>Belden</li><li>Hubbell</li><li>Panduit</li><li>Siemon</li>
+        </ul>
+      </div>
+
+      <aside class="ticket reveal" aria-label="DATACOM at a glance">
+        <div class="ticket-head"><h3>DATACOM at a glance</h3><span>DIV · EST 2002</span></div>
+        <dl>
+          <dt>Standard</dt><dd>TIA/EIA-568A/B structured cabling</dd>
+          <dt>Media</dt><dd>Cat 6A UTP · Coaxial · Single &amp; multi-mode fiber</dd>
+          <dt>Testing</dt><dd>Fluke copper &amp; fiber · OTDR · Fusion splicing</dd>
+          <dt>Design</dt><dd>RCDD on staff</dd>
+          <dt>Warranty</dt><dd>Manufacturer-backed applications assurance</dd>
+        </dl>
+        <div>
+          <div class="ticket-head" style="border-bottom-width:1px; margin-bottom:10px;"><h3 style="font-size:18px;">Project list</h3><span>13 CLIENTS</span></div>
+          <ul class="clients-mini">
+            <li>Morgan Stanley</li><li>Columbia University</li><li>USPS</li><li>Goodwin Proctor</li><li>32BJ SEIU</li><li>The Grand Hyatt Hotel</li><li>KKR</li><li>Moody's</li><li>Akin Gump</li><li>Fortress Investment Group</li><li>Cornell University</li><li>Cisco</li><li>ING</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CAREERS + CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Contact · Careers</span>
+        <h2 class="h2">Reach the office, any hour</h2>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="contact-card emergency">
+          <span class="eyebrow">24-hour telephone</span>
+          <a class="big-phone" href="tel:+12126455150">212-645-5150</a>
+          <p>On standby 365 days a year. Emergency crews are deployed frequently across Manhattan and the boroughs.</p>
+          <address style="color:#DDE2F7">
+            Robert B. Samuels, Inc.<br>
+            132 West 36th Street, 2nd Floor<br>
+            New York, NY 10018<br>
+            Fax 212-645-9933
+          </address>
+          <div class="actions">
+            <a class="btn btn-primary" href="tel:+12126455150">Call now</a>
+            <a class="btn btn-ghost" href="https://maps.google.com/?q=132+West+36th+Street+New+York+NY+10018" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </div>
+        <div class="contact-card" id="careers">
+          <span class="eyebrow">Careers</span>
+          <h3>Join the Samuels crew</h3>
+          <p>For employment inquiries, please contact:</p>
+          <dl class="row">
+            <dt>Contact</dt><dd>Thomas Pagliaro Jr.</dd>
+            <dt>Title</dt><dd>CEO · President</dd>
+            <dt>Phone</dt><dd><a href="tel:+12126455150" style="text-decoration:none">(212) 645-5150</a></dd>
+            <dt>Office</dt><dd>132 West 36th Street, 2nd Floor, New York, NY 10018</dd>
+          </dl>
+          <div class="actions">
+            <a class="btn btn-outline" href="tel:+12126455150">Employment inquiries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="#top"><img src="assets/img/rbs-logo.png" alt="Robert B. Samuels Inc."></a>
+      <div class="foot-aff" aria-label="Affiliations">
+        <img src="assets/img/aff-ibew-local-3.png" alt="IBEW Local Union No. 3">
+        <img src="assets/img/aff-neca.png" alt="NECA">
+        <img src="assets/img/aff-neca-new-york.png" alt="NECA New York">
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Robert B. Samuels, Inc. All rights reserved.</span>
+      <span>Licensed Electrical Contractor · New York · New Jersey · Westchester</span>
+      <a href="https://www.rbsamuels.com" target="_blank" rel="noopener">rbsamuels.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav: solid after leaving the hero
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('is-solid', window.scrollY > 40);
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile menu
+  const toggle = document.getElementById('navToggle');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  nav.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('is-open')));
+
+  // Portfolio filters
+  const filters = document.querySelectorAll('.filter');
+  const works = document.querySelectorAll('#workGrid .work');
+  filters.forEach(btn => btn.addEventListener('click', () => {
+    filters.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    const f = btn.dataset.filter;
+    works.forEach(w => w.classList.toggle('is-hidden', f !== 'all' && w.dataset.sector !== f));
+  }));
+
+  // Gentle settle-in for sections below the fold (content is visible at rest)
+  if (matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
+    const els = [...document.querySelectorAll('.reveal')].filter(el => el.getBoundingClientRect().top > innerHeight);
+    els.forEach(el => el.classList.add('pending'));
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.remove('pending'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+</script>
+</body>
+</html>
