@@ -114,6 +114,7 @@
   /* ---------- Hero ---------- */
   .hero {
     position: relative; display: grid; place-items: center; padding: 0;
+    min-height: 100vh; min-height: 100svh;
     background: var(--ink); color: var(--white); overflow: hidden; isolation: isolate;
     text-align: center;
   }
@@ -127,7 +128,7 @@
       linear-gradient(180deg, rgba(11,18,48,0.72) 0%, rgba(11,18,48,0.38) 40%, rgba(11,18,48,0.78) 100%),
       radial-gradient(60% 50% at 50% 55%, rgba(28,43,227,0.22), transparent 70%);
   }
-  .hero-inner { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 112px var(--gutter) 56px; width: 100%; max-width: 1100px; }
+  .hero-inner { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; padding: 112px var(--gutter) 72px; width: 100%; max-width: 1100px; }
   .hero .eyebrow { color: #C9D1FF; flex-wrap: wrap; justify-content: center; text-align: center; }
   .hero .eyebrow::before, .hero .eyebrow::after { content: ""; width: 28px; height: 2px; background: var(--copper); }
   .hero h1 {
